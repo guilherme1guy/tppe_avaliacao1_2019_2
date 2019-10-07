@@ -63,25 +63,8 @@ public class CadastroAlunos {
 	}
 
 	public Aluno[] ordenarAlunos() {
-		Aluno resposta[] = new Aluno[alunos.length];
-		//copia o vetor para o vetor de resposta
-		for (int i=0; i < alunos.length; i++) {
-			resposta[i] = alunos[i]; 
-		}
 		
-		for (int i = 0; i < resposta.length - 1; i++) {
-			for (int j = i; j < resposta.length; j++) {
-				String matricula1 = obterMatricula(resposta[i]);
-				String matricula2 = obterMatricula(resposta[j]);
-				if (matricula1.compareTo(matricula2) > 0) {
-					Aluno t = resposta[i]; 
-					resposta[i] = resposta[j];
-					resposta[j] = t;
-				}
-			}
-		}
-		
-		return resposta;
+		return (new OrdenadorAlunos(this)).computar();
 	}
 
 	public String obterMatricula(Aluno aluno) {
