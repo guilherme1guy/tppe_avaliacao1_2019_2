@@ -11,21 +11,38 @@ public class Aluno {
 	private String celular;
 
 	public Aluno(String nome, String prefixoMatricula, String sufixoMatricula, String email, String celular) throws DadosAlunoIncompletoException {
-		if (nome == null || prefixoMatricula == null || sufixoMatricula == null ||
-			nome.equals("") || prefixoMatricula.equals("") || sufixoMatricula.equals("")) {
-			StringBuilder builder = new StringBuilder(); 
-			builder.append("Dados informados para Aluno estão incompletos:");
-			builder.append(nome == null ? "Nome: " + nome : null);
-			builder.append(prefixoMatricula == null ? "Prefixo Matricula: " + prefixoMatricula : null);
-			builder.append(sufixoMatricula== null ? "Sufixo Matricula: " + sufixoMatricula : null);
-			throw new DadosAlunoIncompletoException(builder.toString());
-		}
+		
+		validarDados(nome, prefixoMatricula, sufixoMatricula);
 		
 		this.nome = nome;
 		this.prefixoMatricula = prefixoMatricula; 
 		this.sufixoMatricula = sufixoMatricula; 
 		this.email = email; 
 		this.celular = celular; 
+	}
+
+	private void validarDados(String nome, String prefixoMatricula, String sufixoMatricula) throws DadosAlunoIncompletoException {
+		
+		if (nome == null || prefixoMatricula == null || sufixoMatricula == null ||
+			nome.equals("") || prefixoMatricula.equals("") || sufixoMatricula.equals("")) {
+			
+			StringBuilder builder = criarMensagemErro(nome, prefixoMatricula, sufixoMatricula);
+			
+			throw new DadosAlunoIncompletoException(builder.toString());
+		}
+	}
+
+	private StringBuilder criarMensagemErro(String nome, String prefixoMatricula, String sufixoMatricula) {
+		
+		StringBuilder builder = new StringBuilder(); 
+		
+		builder.append("Dados informados para Aluno estão incompletos:");
+		
+		builder.append(nome == null ? "Nome: " + nome : null);
+		builder.append(prefixoMatricula == null ? "Prefixo Matricula: " + prefixoMatricula : null);
+		builder.append(sufixoMatricula== null ? "Sufixo Matricula: " + sufixoMatricula : null);
+		
+		return builder;
 	}
 
 	public static Aluno obterAluno(String nome, String prefixoMatricula, String sufixoMatricula, String email,
