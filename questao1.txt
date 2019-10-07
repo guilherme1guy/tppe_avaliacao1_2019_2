@@ -1,0 +1,18 @@
+a) Uma interface pública é um construto da linguagem Java, que deixa acessível métodos para 
+outros objetos que não o de origem. Já uma interface publicada pode remeter a um sistema 
+completo que possui campos que permitem o acesso por outros sistemas e usuários, 
+como uma API. Executar uma refatoração em uma interface publicada não é recomendado pois 
+outros sistemas, fora do controle de seu criados, já podem ter sido criados e estarem utilizando 
+esta interface.
+
+b) Uma mudança de "cirurgia com rifle" é o contrario de "mudanças divergentes". A primeira significa 
+realizar uma mudança que afeta várias classes, já a segunda ocorre quando várias mudanças ocorrem
+dentro de uma mesma classe.
+
+c) Não, nem sempre é visto um aumento de desempenho. Isso acontece pois alguns processos de 
+refatoração levam a criação de objetos e chamadas extras de função, o que pode levar a uma 
+velocidade menor.
+
+d) Uma refatoração é considerada de sucesso quando o sistema possui menos "code smells" e 
+uma qualidade maior, principalemtne em relaçãoa a manutenibilidade, sem ter alterações de 
+comportamento. Isso pode ser garantido por meio de uma suíte de testes unitários.
